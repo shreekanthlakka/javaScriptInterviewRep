@@ -1,0 +1,18 @@
+{
+    "name": "javascriptinterview",
+    "version": "1.0.0",
+    "description": "",
+    "main": "callbackHell.js",
+    "scripts": {
+        "dev": "nodemon promiseAll.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "superagent": "^8.1.2"
+    },
+    "devDependencies": {
+        "nodemon": "^3.0.2"
+    }
+}
