@@ -50,17 +50,27 @@ const writeFilePro = (file, data) => {
     });
 };
 
-readFilePro("../Public/inputDog.txt")
-    .then((data) => {
-        console.log(data);
-        return fetch(`https://dog.ceo/api/breed/${data}/images/random`);
-    })
-    .then((data1) => {
-        console.log("data 111---", data1.body.message);
-        return writeFilePro("../Public/out.txt", data1.body.message);
-    })
-    .then(() => console.log("written to file"))
-    .catch((err) => console.log(err.message));
+(async () => {
+    const data = await readFilePro("../Public/inputDog.txt");
+    console.log(data);
+    const res = await fetch(`https://dog.ceo/api/breed/${data}/images/random`);
+    console.log(res.body.message);
+    await writeFilePro("../Public/out.txt", res);
+})();
+
+// readFilePro("../Public/inputDog.txt")
+//     .then((data) => {
+//         console.log(data);
+//         return superAgent.get(
+//             `https://dog.ceo/api/breed/${data}/images/random`
+//         );
+//     })
+//     .then((data1) => {
+//         console.log("data 111---", data1.body.message);
+//         return writeFilePro("../Public/out.txt", data1.body.message);
+//     })
+//     .then(() => console.log("written to file"))
+//     .catch((err) => console.log(err.message));
 
 // fs.readFile("../Public/inputDog.txt", "utf-8", (err, data) => {
 //     if (err) return console.log("errrrrrr file read", err);
